@@ -2,7 +2,7 @@
 
 var api = {
 	root: "https://api.themoviedb.org/3",
-	token: "" // TODO put your api key here
+	token: "626aaeb749bede2aeb605c55c9025e93" // TODO put your api key here
 }
 
 /**
@@ -10,12 +10,11 @@ var api = {
  * if successful, prints the results to the console
  */
 function testTheAPI() {
-	fetch(`${api.root}/discover/movie?api_key=${api.token}`)
-		.then(resp => resp.ok ? resp : Promise.reject(resp))
-		.then(function(response) {
-			console.log("We got a response from The Movie DB!");
-			console.log(response);
-		})
+    fetch(`${api.root}/configuration?api_key=${api.token}`)
+        .then(resp => resp.ok ? resp : Promise.reject(resp))
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(err => console.log(err));
 }
 
 
